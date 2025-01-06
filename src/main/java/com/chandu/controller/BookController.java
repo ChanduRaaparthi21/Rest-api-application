@@ -31,6 +31,10 @@ public class BookController {
 		return bookRepository.findAll();
 	}
 	
+	@GetMapping("/hello")
+	public String hello() {
+		return "Heello";
+	}
 	
 	
 	@GetMapping(value = "{bookId}")

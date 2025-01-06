@@ -83,6 +83,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>junit-rest-api-application</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

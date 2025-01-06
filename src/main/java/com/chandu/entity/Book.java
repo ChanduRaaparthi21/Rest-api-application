@@ -16,8 +16,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "book_record")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class Book {
 
