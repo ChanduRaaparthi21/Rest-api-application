@@ -1,9 +1,9 @@
-name: Java CI/CD on Local Machine
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - master
+      - master  # or main, based on your branch
   pull_request:
     branches:
       - master
@@ -13,25 +13,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
+      # Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      # Step 2: Set up JDK (Java Development Kit)
+      # Set up JDK 17
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v2
         with:
-          java-version: '17'
+          java-version: 17
+          distribution: 'adoptopenjdk'
+          check-latest: false
 
-      # Step 3: Install dependencies and build
+      # Add your build and test steps here
       - name: Build with Maven
         run: mvn clean install
 
-      # Step 4: Run unit tests
       - name: Run Tests
         run: mvn test
-
-      # Optional: Run the Spring Boot application (only for testing, not for CI)
-      - name: Run Application Locally
-        run: mvn spring-boot:run
-        if: ${{ github.event_name == 'push' }} # Only run for pushes
